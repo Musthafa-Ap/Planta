@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomeItemsPage extends StatefulWidget {
+class PopularItems extends StatefulWidget {
   @override
-  _HomeItemsPageState createState() => _HomeItemsPageState();
+  _PopularItemsState createState() => _PopularItemsState();
 }
 
-class _HomeItemsPageState extends State<HomeItemsPage> {
+class _PopularItemsState extends State<PopularItems> {
   @override
   Widget build(BuildContext context) {
     return  Column(

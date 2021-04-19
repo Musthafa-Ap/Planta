@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:planta/Homepage/Buttonsrow.dart';
 import 'package:planta/Homepage/Heading.dart';
-import 'package:planta/Homepage/HomeItemsPage.dart';
+import 'package:planta/Homepage/HomeDetailesPage.dart';
+import 'package:planta/Homepage/PopularItems.dart';
 import 'package:planta/Homepage/SpecialItems.dart';
 
 class Homepage extends StatefulWidget {
@@ -45,15 +46,7 @@ class _HomepageState extends State<Homepage> {
           Heading(),
           SizedBox(height: 10),
           Buttonsrow(),
-          HomeItemsPage(),
-          Divider(
-            thickness: 1,
-          ),
-
-
-SpecialItems(),
-
-
+          HomeDetailesPage()
 
         ],
       ),
