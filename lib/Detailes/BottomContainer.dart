@@ -41,7 +41,7 @@ ShoppingCart()
             ),
             child: Icon(Icons.favorite_border),
           ),
-          FlatButton.icon(onPressed: (){}, icon: Icon(Icons.shopping_basket,size: 25,), label: Text("Add to Basket",style: TextStyle(fontSize: 25),),shape: StadiumBorder(),color: Colors.green,padding: EdgeInsets.only(left: 50,right: 50,top: 8,bottom: 8))
+          FlatButton.icon(onPressed: (){}, icon: Icon(Icons.shopping_basket,size: 25,), label: Text("Buy Now",style: TextStyle(fontSize: 25),),shape: StadiumBorder(),color: Colors.green,padding: EdgeInsets.only(left: 90,right: 90,top: 8,bottom: 8))
         ],
       ),
     );
