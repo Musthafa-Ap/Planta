@@ -1,19 +1,18 @@
 
 import 'package:flutter/material.dart';
+import 'package:planta/Homepage/HomeDetailesPage.dart';
+import 'package:planta/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
-class ShoppingCart extends StatefulWidget {
+import 'Detailes.dart';
+
+class ShoppingCart extends StatelessWidget {
+
+
   final String name;
   final BuildContext context;
   ShoppingCart({this.name,this.context});
-
-  @override
-  _ShoppingCartState createState() => _ShoppingCartState();
-}
-
-class _ShoppingCartState extends State<ShoppingCart> {
-
 
 
 
@@ -34,28 +33,35 @@ class _ShoppingCartState extends State<ShoppingCart> {
                 shape: BoxShape.circle,
                 border: Border.all(color: Colors.black)
             ),
-            child: IconButton(icon: Icon(Icons.favorite,color: Colors.red),onPressed: (){},)
+            child: IconButton(icon: Icon(Icons.favorite,color: Colors.red),onPressed: (){print(name);},)
           ),
           FlatButton.icon(onPressed: (){return Alert(
 
             context: context,
             title:'ORDER',
+            desc: '(Send an email)',
             content: Text('Are you sure to buy this plant ?'),
             buttons: [
               DialogButton(
                 child: Text('NO'),
 
                 onPressed: (){
-                  Navigator.of(context).pop();
-
-                },
+                 Navigator.of(context).pop();
+                 },
 color: Colors.white,border:Border.all(color: Colors.green),
               ),
               DialogButton(
 
                 child: Text("YES"),
                 onPressed: ( ){
+
+                  Navigator.of(context).pop();
+
+
 _launchEmail();
+
+
+
 
 
                 },
@@ -78,7 +84,7 @@ _launchEmail();
     );
   }
   void _launchEmail()async{
-    var url = 'mailto:musthafamohammed398@gmail.com?subject=For ordering &body=Plant name : moneyplant ';
+    var url = 'mailto:musthafamohammed398@gmail.com?subject=For ordering &body=Plant name : $name';
     if(await canLaunch(url)){
       await launch(url);
     }
