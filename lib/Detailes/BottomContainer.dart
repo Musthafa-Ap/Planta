@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'ShoppingCart.dart';
 class BottomContainer extends StatelessWidget {
 final  String name;
 final int price;
@@ -18,35 +20,13 @@ final int price;
           child:Column(
             children: [
               ShoppingDetailes(),
-ShoppingCart()
+ShoppingCart(name: name,context:context)
             ],
           )
         ),
     );
 
   }
-
-  Widget ShoppingCart(){
-    return Container(
-      padding: EdgeInsets.all(10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Container(
-            width: 50,
-            height: 50,
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(color: Colors.black)
-            ),
-            child: Icon(Icons.favorite_border),
-          ),
-          FlatButton.icon(onPressed: (){}, icon: Icon(Icons.shopping_basket,size: 25,), label: Text("Buy Now",style: TextStyle(fontSize: 25),),shape: StadiumBorder(),color: Colors.green,padding: EdgeInsets.only(left: 90,right: 90,top: 8,bottom: 8))
-        ],
-      ),
-    );
-  }
-
 
 
 
