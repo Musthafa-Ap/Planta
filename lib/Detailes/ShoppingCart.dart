@@ -9,10 +9,10 @@ import 'Detailes.dart';
 
 class ShoppingCart extends StatelessWidget {
 
-
+final int Count;
   final String name;
   final BuildContext context;
-  ShoppingCart({this.name,this.context});
+  ShoppingCart({this.name,this.context,this.Count});
 
 
 
@@ -84,7 +84,9 @@ _launchEmail();
     );
   }
   void _launchEmail()async{
-    var url = 'mailto:musthafamohammed398@gmail.com?subject=For ordering &body=Plant name : $name';
+
+    var url = 'mailto:musthafamohammed398@gmail.com?subject=For ordering &body=Plant name : $name,   Count : $Count'
+        '';
     if(await canLaunch(url)){
       await launch(url);
     }
