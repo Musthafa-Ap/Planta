@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:planta/Detailes/ProductDetailes.dart';
 
 import 'ShoppingCart.dart';
 class ShoppingDetailes extends StatefulWidget {
@@ -63,6 +64,9 @@ class _ShoppingDetailesState extends State<ShoppingDetailes> {
                     ListTile(
                       leading:Text("Detailes",style: TextStyle(fontSize: 20),),
                       trailing: Icon(Icons.add,size: 20,color: Colors.black,),
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductDetailes(name: widget.name,price: widget.price.toInt(),)));
+                      },
                     ),
                     Divider(thickness: 1,),
                     ListTile(

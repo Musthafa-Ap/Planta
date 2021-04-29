@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mailer/smtp_server/gmail.dart';
 
 import 'package:planta/Homepage/HomeDetailesPage.dart';
+import 'package:planta/Success/SuccessScreen.dart';
 import 'package:planta/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -60,6 +61,7 @@ final formkey = GlobalKey<FormState>();
                       child: Column(
                         children: [
                           TextFormField(
+                            keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                               labelText: 'Email',
                               hintText: 'Example@gamil.com',
@@ -67,16 +69,17 @@ final formkey = GlobalKey<FormState>();
                             ),
                             validator: (input) =>   !input.contains('@')? 'Not a email' :null,
                             onSaved: (input)=>_email=input,
+
                           ),
 
                           TextFormField(
-
                             decoration: InputDecoration(
 
                               labelText: 'Password',
-                              prefixIcon: Icon(Icons.security)
+                              prefixIcon: Icon(Icons.security),
                             ),
                             controller: password,
+                            obscureText: true,
                           ),
                           TextFormField(
                             keyboardType: TextInputType.number,
@@ -89,6 +92,7 @@ final formkey = GlobalKey<FormState>();
                             controller: mobile,
                           ),
                           TextFormField(
+                            keyboardType: TextInputType.text,
                             scrollPhysics: BouncingScrollPhysics(),
                             maxLines: 3,
                             decoration: InputDecoration(
@@ -105,6 +109,7 @@ final formkey = GlobalKey<FormState>();
                       DialogButton(
                         child: Text('NO'),
                         onPressed: () {
+
                           Navigator.of(context).pop();
                         },
                         color: Colors.white,
@@ -118,10 +123,16 @@ final formkey = GlobalKey<FormState>();
                             password1=password.text ;
                             mobile1=mobile.text;
                             address1=address.text;
+                            _launchEmail(widget.name,widget.Count.toString(),_email,password1,mobile1,address1);
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>SuccessScreen()));
+
+
+
                           });
                           //Navigator.of(context).pop();
 
-                          _launchEmail(widget.name,widget.Count.toString(),_email,password1,mobile1,address1);
+
+
                         },
                         color: Colors.green,
                       )
@@ -173,6 +184,7 @@ void submit(){
       print('Message sent: ' + sendReport.toString());
     } on MailerException catch (e) {
       print('Message not sent.');
+      
       for (var p in e.problems) {
         print('Problem: ${p.code}: ${p.msg}');
       }
@@ -203,16 +215,3 @@ void submit(){
 
 
 
-
- /* void _launchEmail() async {
-    var url =
-        'mailto:musthafamohammed398@gmail.com?subject=For ordering &body=Plant name : $widget.name,   Count : $widget.Count'
-        '';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not send mail';
-    }
-  }
-}
-*/
