@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:planta/Detailes/ProductDetailes.dart';
+import 'package:planta/Detailes/ShipAndPay.dart';
 
 import 'ShoppingCart.dart';
 class ShoppingDetailes extends StatefulWidget {
@@ -30,7 +31,8 @@ class _ShoppingDetailesState extends State<ShoppingDetailes> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(widget.name,style: TextStyle(fontSize: 30),),
-                            Text( widget.price.toString(),style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),)
+                            Text('₹'+
+                              widget.price.toString(),style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),)
                           ],
                         )
                     ),
@@ -70,8 +72,11 @@ class _ShoppingDetailesState extends State<ShoppingDetailes> {
                     ),
                     Divider(thickness: 1,),
                     ListTile(
-                      leading:Text("Shipping & Returns",style: TextStyle(fontSize: 20),),
+                      leading:Text("Shipping & Payments ",style: TextStyle(fontSize: 20),),
                       trailing: Icon(Icons.add,size: 20,color: Colors.black,),
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>ShipAndPay()));
+                      },
                     ),
                   ],
                 ),)

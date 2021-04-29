@@ -19,7 +19,7 @@ class _ProductDetailesState extends State<ProductDetailes> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(widget.name,style: TextStyle(fontSize: 30)),
-          Text(widget.price.toString(),style: TextStyle(fontSize: 26)),
+          Text('₹'+widget.price.toString(),style: TextStyle(fontSize: 26)),
           SizedBox(height: 10,),
           Text("Normally grown as a houseplant, nerve plant or Fittonia is a spreading evergreen with "
               "delicately veined, deep-green leaves. Although the most popular vein color is silvery white, "
@@ -27,7 +27,8 @@ class _ProductDetailesState extends State<ProductDetailes> {
               "low-growing creeper that is a perfect fit for terrariums or bottle gardens. As beautiful as"
               " it is, fittonia is somewhat temperamental and tricky to grow as a houseplant. It requires very high,"
               " constant humidity, such as found in a terrarium, and cannot tolerate stagnant conditions. "
-              "Nerve plant is also sensitive to strong, direct sunlight and will quickly suffer from leaf burn.",
+              "Nerve plant is also sensitive to strong, direct sunlight and will quickly suffer from leaf burn."
+              "These lucky plant are very easy to take care of. Keep roots in water and avoid direct sunlight, that's it!",
             style: TextStyle(fontSize: 20),)
         ],
       )
