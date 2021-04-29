@@ -18,11 +18,17 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-
-        leading: (Icon(
-          Icons.menu,
-          color: Colors.grey,
-        )),
+        leading: Builder(
+          builder: (BuildContext context){
+            return IconButton(
+              icon: Icon(Icons.menu,color: Colors.grey,
+              ),onPressed: (){
+              Scaffold.of(context).openDrawer();
+            }
+              ,
+            );
+          },
+        ),
         actions: [
           Container(
             width: 40,
@@ -40,6 +46,40 @@ class _HomepageState extends State<Homepage> {
         ],
         toolbarHeight: 50,
         elevation: 0,
+
+      ),
+      drawer: Drawer(
+
+        child: ListView(
+          physics: BouncingScrollPhysics(),
+          children: [
+              UserAccountsDrawerHeader(
+
+                 accountName: Text("Musthafa Ap",style: TextStyle(fontSize: 20),),
+                 decoration: BoxDecoration(color: Colors.green),
+currentAccountPicture: CircleAvatar(backgroundImage: AssetImage("assets/images/Peace_lilly.jpg"),),
+               ),
+
+            ListTile(leading: Icon(Icons.favorite,),
+            title: Text("My Wishlist",style: TextStyle(fontSize: 20),),),
+            ListTile(leading: Icon(Icons.shopping_cart),
+              title: Text("My Cart",style: TextStyle(fontSize: 20),),),
+            ListTile(leading: Icon(Icons.person),
+              title: Text("My Account",style: TextStyle(fontSize: 20),),),
+            ListTile(leading: Icon(Icons.notifications),
+              title: Text("My Notifications",style: TextStyle(fontSize: 20),),),
+            ListTile(leading: Icon(Icons.chat),
+              title: Text("My Chats",style: TextStyle(fontSize: 20),),),
+            ListTile(leading: Icon(Icons.local_offer),
+              title: Text("Offers",style: TextStyle(fontSize: 20),),),
+            ListTile(leading: Icon(Icons.home),
+              title: Text("Home",style: TextStyle(fontSize: 20),),),
+            ListTile(leading: Icon(Icons.error_outline),
+              title: Text("About",style: TextStyle(fontSize: 20),),),
+            ListTile(leading: Icon(Icons.supervisor_account),
+              title: Text("Developers",style: TextStyle(fontSize: 20),),),
+          ],
+        ),
       ),
       body: Column(
         children: [
