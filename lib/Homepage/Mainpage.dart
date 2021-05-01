@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:planta/Detailes/Suggestions.dart';
 import 'package:planta/Homepage/Buttonsrow.dart';
 import 'package:planta/Homepage/Heading.dart';
 import 'package:planta/Homepage/HomeDetailesPage.dart';
@@ -55,9 +56,9 @@ class _HomepageState extends State<Homepage> {
           children: [
               UserAccountsDrawerHeader(
 
-                 accountName: Text("Musthafa Ap",style: TextStyle(fontSize: 20),),
-                 decoration: BoxDecoration(color: Colors.green),
-currentAccountPicture: CircleAvatar(backgroundImage: AssetImage("assets/images/Peace_lilly.jpg"),),
+                 accountName: Text("Amal Er",style: TextStyle(fontSize: 20),),
+                 decoration: BoxDecoration(color: Colors.grey),
+currentAccountPicture: CircleAvatar(backgroundImage: AssetImage("assets/images/Amal.JPG"),),
                ),
 
             ListTile(leading: Icon(Icons.favorite,),
@@ -91,30 +92,41 @@ currentAccountPicture: CircleAvatar(backgroundImage: AssetImage("assets/images/P
 
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _index,
-        fixedColor: Colors.green,
-        selectedFontSize: 17,
-        iconSize: 25,
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart),
-              title: Text('Cart')
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home), title: Text('Home')),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.feedback), title: Text('Suggestions')),
-        ],
-        onTap: (index){
-          setState(() {
-            _index = index;
-          });
-        },
-      ),
+      bottomNavigationBar: Bot(),
 
     );
   }
+
+  Widget Bot(){
+    return BottomNavigationBar(
+      currentIndex: _index,
+      fixedColor: Colors.green,
+      selectedFontSize: 17,
+      iconSize: 25,
+      items: [
+        BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            title: Text('Cart'),
+        ),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.home), title: Text('Home')),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.feedback), title: Text('Suggestions'),),
+      ],
+      onTap: (index){
+        setState(() {
+          _index = index;
+        }
+        );
+       if(index==2){
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>Suggestions()));
+
+        }
+      },
+    );
+  }
+
+
 }
 
 
