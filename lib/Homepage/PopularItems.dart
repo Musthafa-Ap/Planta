@@ -30,7 +30,13 @@ class _PopularItemsState extends State<PopularItems> {
                   ImageCard('Ficus_plant.jpeg','Ficus Plant',260,context),
                   ImageCard('Peace_lilly.jpg','Peace Lilly',129,context),
                   ImageCard('Air_purifying.jpg','Air Purifying',543,context),
-                  ImageCard('Test_tube_plant.jpg','Testtube Plant',298,context)
+                  ImageCard('Test_tube_plant.jpg','Testtube Plant',298,context),
+                  ImageCard("Chinese_moneyplant.jpg",'Chinese Plant',384,context),
+                  ImageCard("Jade_plant.jpg",'Jade Plant',296,context),
+                  ImageCard("Oxalis.jpg",'Oxalis Plant',359,context),
+                  ImageCard("String_of_pearls.jpg",'String of Pearls',400,context),
+                  ImageCard("Silverdollar_plant.jpg",'Silverdollar Plant',312,context),
+                  ImageCard("ZZ_plant.jpg",'ZZ Plant',259,context)
 
                 ],
               ),

@@ -23,7 +23,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
           SizedBox(height:MediaQuery.of(context).size.height*.05),
           Text("THANK YOU",style: TextStyle(color: Colors.green,fontSize: 30,),),
           SizedBox(height:MediaQuery.of(context).size.height*.09),
-          FlatButton(child: Text("DONE",style: TextStyle(fontSize: 25,color: Colors.white,fontWeight: FontWeight.bold),),onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=>Homepage()));},color: Colors.lightGreen,)
+          FlatButton(child: Text("DONE",style: TextStyle(fontSize: 25,color: Colors.white,fontWeight: FontWeight.bold),),onPressed: (){ Navigator.pop(context);},color: Colors.lightGreen,)
 
         ],
       ),

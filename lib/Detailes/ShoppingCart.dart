@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mailer/smtp_server/gmail.dart';
 
 import 'package:planta/Homepage/HomeDetailesPage.dart';
@@ -11,6 +12,7 @@ import 'Detailes.dart';
 
 class ShoppingCart extends StatefulWidget {
   final int Count;
+
   final String name;
   final BuildContext context;
   ShoppingCart({this.name, this.context, this.Count});
@@ -20,15 +22,19 @@ class ShoppingCart extends StatefulWidget {
 }
 
 class _ShoppingCartState extends State<ShoppingCart> {
+  final formkey = GlobalKey<FormState>();
   bool liked = false;
-String _email;
-TextEditingController password = TextEditingController();
-  TextEditingController mobile = TextEditingController();
-  String mobile1='';
-  TextEditingController address = TextEditingController();
-  String address1='';
-String password1='';
-final formkey = GlobalKey<FormState>();
+
+
+
+TextEditingController _email = TextEditingController();
+  String email='';
+  TextEditingController _password = TextEditingController();
+  String password='';
+  TextEditingController _mobile = TextEditingController();
+  String mobile='';
+  TextEditingController _address = TextEditingController();
+  String address='';
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -62,34 +68,61 @@ final formkey = GlobalKey<FormState>();
                         children: [
                           TextFormField(
                             keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
+                              decoration: InputDecoration(
                               labelText: 'Email',
                               hintText: 'Example@gamil.com',
                               prefixIcon: Icon(Icons.email),
                             ),
-                            validator: (input) =>   !input.contains('@')? 'Not a email' :null,
-                            onSaved: (input)=>_email=input,
-
+                            validator: (input) {
+                              if(input.isEmpty){
+                                return ' Enter the email';}
+                               if(!input.contains('@'))
+                              {
+                                return'Enter the valid email ( @ doesnt contains) ';
+                              }
+                              return null;
+                            },
+                           // onSaved: (input){input=email;},
+                            controller:  _email,
                           ),
 
-                          TextFormField(
+                         TextFormField(
+
                             decoration: InputDecoration(
 
                               labelText: 'Password',
                               prefixIcon: Icon(Icons.security),
                             ),
-                            controller: password,
+                            validator: (input){
+                              if(input.isEmpty){
+                                return 'Please type password';
+                              }
+                              else if(input.length<8){
+                                return 'Please type atleast 8 characters';
+                              }
+                              return null;
+                            },
+                           controller: _password,
                             obscureText: true,
                           ),
                           TextFormField(
                             keyboardType: TextInputType.number,
-
+                            inputFormatters: [WhitelistingTextInputFormatter.digitsOnly],
                             decoration: InputDecoration(
                                 labelText: 'Mobile Number ',
                               hintText: '9999999999',
                               prefixIcon: Icon(Icons.local_phone)
                             ),
-                            controller: mobile,
+                            validator: (input){
+                              if(input.isEmpty){
+                                return 'Please type mobile number';
+                              }
+                              else if(input.length<10 || input.length>10){
+                                return 'Please type a valid number';
+                              }
+                              return null;
+                            },
+                            controller: _mobile,
                           ),
                           TextFormField(
                             keyboardType: TextInputType.text,
@@ -100,8 +133,17 @@ final formkey = GlobalKey<FormState>();
                               prefixIcon: Icon(Icons.local_shipping)
 
                             ),
-                            controller: address,
-                          )
+                            validator: (input){
+                              if(input.isEmpty){
+                                return 'Please type the address';
+                              }
+                              else if(input.length<16){
+                                return 'Please type a valid address';
+                              }
+                              return null;
+                            },
+                            controller: _address,
+                          ),
                         ],
                       ),
                     ),
@@ -118,22 +160,17 @@ final formkey = GlobalKey<FormState>();
                       DialogButton(
                         child: Text("YES"),
                         onPressed: () {
-                          setState(() {
-                            submit();
-                            password1=password.text ;
-                            mobile1=mobile.text;
-                            address1=address.text;
-                            _launchEmail(widget.name,widget.Count.toString(),_email,password1,mobile1,address1);
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>SuccessScreen()));
+                            setState(() {
 
+                              email=_email.text;
+                              address=_address.text;
+                              password=_password.text;
+                              mobile=_mobile.text;
+                              submit();
 
+                            });
 
-                          });
-                          //Navigator.of(context).pop();
-
-
-
-                        },
+                            },
                         color: Colors.green,
                       )
                     ]).show();
@@ -155,19 +192,20 @@ final formkey = GlobalKey<FormState>();
   }
 void submit(){
     if(formkey.currentState.validate()){
-    formkey.currentState.save();
-    Navigator.of(context).pop();
+      Navigator.of(context).pop();
+      Scaffold.of(context).showSnackBar(SnackBar(content: Text("Order Processing....",style: TextStyle(fontSize: 16),),
+     shape: StadiumBorder(),
+      ));
+      _launchEmail(widget.name,widget.Count.toString(),email,password,mobile,address);
+
     }
-
-
-
-}
+  }
 
 
 
 
-  _launchEmail(String name,String Count,String email,String password1,String mobile1,String address1) async {
-    String username = email;
+  _launchEmail(String name,String Count,String email1,String password1,String mobile1,String address1) async {
+    String username = email1;
     String password = password1;
 
     final smtpServer = gmail(username, password);
@@ -181,10 +219,11 @@ void submit(){
 
     try {
       final sendReport = await send(message, smtpServer);
-      print('Message sent: ' + sendReport.toString());
+      print('Message sent: ' + sendReport.toString() );
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>SuccessScreen()));
     } on MailerException catch (e) {
       print('Message not sent.');
-      
+
       for (var p in e.problems) {
         print('Problem: ${p.code}: ${p.msg}');
       }
