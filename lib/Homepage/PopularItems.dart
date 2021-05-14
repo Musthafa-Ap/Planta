@@ -46,12 +46,31 @@ class _PopularItemsState extends State<PopularItems> {
 
     );
   }
-  Widget ImageCard(String img,String name,int price,BuildContext context ){
+
+
+
+
+
+
+}
+
+
+
+
+
+class ImageCard extends StatelessWidget {
+  final String img;
+    final  String name;
+       final int price;
+       final BuildContext context;
+  ImageCard(this.img,this.name,this.price,this.context);
+  @override
+  Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
         Navigator.push(context, MaterialPageRoute(builder: (context){
           return Detailes(
-              img: img,name: name,price: price,context: context,
+            img: img,name: name,price: price,context: context,
           );
         }));
       },
@@ -79,5 +98,49 @@ class _PopularItemsState extends State<PopularItems> {
       ),
     );
   }
+}
 
+
+
+
+class BigImageCard extends StatelessWidget {
+  final String img;
+  final  String name;
+  final int price;
+  final BuildContext context;
+  BigImageCard(this.img,this.name,this.price,this.context);
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context){
+          return Detailes(
+            img: img,name: name,price: price,context: context,
+          );
+        }));
+      },
+      child: Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: Column(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width/2.3,
+                height: MediaQuery.of(context).size.height/3,
+                child: ClipRRect(
+                  child: Image.asset(
+                    "assets/images/$img",
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              SizedBox(height:10),
+              Text(name,style: TextStyle(fontSize: 17),),
+              SizedBox(height: 5,),
+              Text('₹$price',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 19),),
+            ],
+          )
+      ),
+    );
+  }
 }

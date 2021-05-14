@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Intro(),
+      home: Bot(),
     );
   }
 }
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
 
 
 
-
+/*
 class Intro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -117,7 +117,7 @@ class Intro extends StatelessWidget {
   }
 }
 
-
+*/
 
 
 class Bot extends StatefulWidget {
