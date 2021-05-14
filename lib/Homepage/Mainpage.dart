@@ -13,7 +13,7 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  int _index = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,41 +92,13 @@ currentAccountPicture: CircleAvatar(backgroundImage: AssetImage("assets/images/A
 
         ],
       ),
-      bottomNavigationBar: Bot(),
 
     );
   }
 
-  Widget Bot(){
-    return BottomNavigationBar(
-      currentIndex: _index,
-      fixedColor: Colors.green,
-      selectedFontSize: 17,
-      iconSize: 25,
-      items: [
-        BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            title: Text('Cart'),
-        ),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.home), title: Text('Home')),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.feedback), title: Text('Suggestions'),),
-      ],
-      onTap: (index){
-        setState(() {
-          _index = index;
-        }
-        );
-       if(index==2){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>Suggestions()));
-
-        }
-      },
-    );
-  }
 
 
 }
+
 
 
