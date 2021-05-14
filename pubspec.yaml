@@ -26,6 +26,9 @@ dependencies:
   mailer:
   rflutter_alert:
   url_launcher:
+  introduction_screen:
+  shared_preferences:
+  after_layout:
 
 
   # The following adds the Cupertino Icons font to your application.

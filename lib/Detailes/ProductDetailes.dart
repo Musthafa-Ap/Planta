@@ -15,7 +15,7 @@ class _ProductDetailesState extends State<ProductDetailes> {
       appBar: AppBar(title: Text('Plant Detailes'),backgroundColor: Colors.green,),
       body:
 
-            Container(margin:EdgeInsets.all(15),padding:EdgeInsets.all(10),decoration:BoxDecoration(border:Border.all(color: Colors.green),borderRadius: BorderRadius.all(Radius.circular(20))),child:
+            Container(height:MediaQuery.of(context).size.height,margin:EdgeInsets.all(15),padding:EdgeInsets.all(10),decoration:BoxDecoration(border:Border.all(color: Colors.green),borderRadius: BorderRadius.all(Radius.circular(20))),child:
             SingleChildScrollView(
               scrollDirection: Axis.vertical,
               physics: BouncingScrollPhysics(),

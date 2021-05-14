@@ -60,8 +60,8 @@ class _PopularItemsState extends State<PopularItems> {
           child: Column(
             children: [
               Container(
-                width: 110,
-                height: 160,
+                width: MediaQuery.of(context).size.width/3,
+                height: MediaQuery.of(context).size.height/4,
                 child: ClipRRect(
                   child: Image.asset(
                     "assets/images/$img",

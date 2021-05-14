@@ -6,6 +6,7 @@ class ShipAndPay extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("Shipping & Payments"),backgroundColor: Colors.green,),
       body: Container(margin: EdgeInsets.all(15),
+        height: MediaQuery.of(context).size.height,
         padding:EdgeInsets.all(10),decoration:BoxDecoration(border:Border.all(color: Colors.green),borderRadius: BorderRadius.all(Radius.circular(20))),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,

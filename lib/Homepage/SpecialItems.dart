@@ -52,13 +52,13 @@ SpecialCard(img: "Moneyplant2.jpeg",name: 'Moneyplant 2',price:298,context: cont
       },
       child: Container(
         padding: EdgeInsets.all(5),
-        width: 270,
-        height: 140,
+        width: MediaQuery.of(context).size.width/1.32,
+        height: MediaQuery.of(context).size.height/4.57,
         child: Row(
           children: [
             Container(
               margin: EdgeInsets.only(right: 5),
-              height: 120,
+              height: MediaQuery.of(context).size.height/5.33,
               child: ClipRRect(
 
                 borderRadius: BorderRadius.circular(20),

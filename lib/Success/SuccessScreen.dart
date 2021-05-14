@@ -10,15 +10,15 @@ class _SuccessScreenState extends State<SuccessScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
         children: [
           SizedBox(height:MediaQuery.of(context).size.height*.1 ,),
           Container(
-              height:MediaQuery.of(context).size.height*.4 ,
-              child: Image.asset("assets/images/tick.png"),
+              height:MediaQuery.of(context).size.height*.5 ,
+              child: Image.asset("assets/images/Success.gif",),
             alignment: Alignment.topCenter,
           ),
-          SizedBox(height:MediaQuery.of(context).size.height*.1 ,),
           Text("YOUR ORDER IS PLACED",style: TextStyle(color: Colors.green,fontSize: 30,fontWeight: FontWeight.bold),),
           SizedBox(height:MediaQuery.of(context).size.height*.05),
           Text("THANK YOU",style: TextStyle(color: Colors.green,fontSize: 30,),),

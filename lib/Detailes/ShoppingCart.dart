@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mailer/smtp_server/gmail.dart';
-
 import 'package:planta/Homepage/HomeDetailesPage.dart';
 import 'package:planta/Success/SuccessScreen.dart';
 import 'package:planta/main.dart';
@@ -35,6 +34,7 @@ TextEditingController _email = TextEditingController();
   String mobile='';
   TextEditingController _address = TextEditingController();
   String address='';
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,8 +43,8 @@ TextEditingController _email = TextEditingController();
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-              width: 50,
-              height: 50,
+              width: MediaQuery.of(context).size.width/7.2,
+              height: MediaQuery.of(context).size.height/14,
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(color: Colors.black)),
@@ -52,6 +52,7 @@ TextEditingController _email = TextEditingController();
                 icon: Icon(liked ? Icons.favorite : Icons.favorite_border,
                     color: liked ? Colors.red : Colors.black),
                 onPressed: () {
+
                   setState(() {
                     liked = !liked;
                   });
@@ -185,7 +186,7 @@ TextEditingController _email = TextEditingController();
               ),
               shape: StadiumBorder(),
               color: Colors.green,
-              padding: EdgeInsets.only(left: 75, right: 75, top: 8, bottom: 8))
+              padding: EdgeInsets.only(left: MediaQuery.of(context).size.width/4.8, right:  MediaQuery.of(context).size.width/4.8, top: MediaQuery.of(context).size.height/80, bottom: MediaQuery.of(context).size.height/80,))
         ],
       ),
     );
@@ -223,7 +224,7 @@ void submit(){
       Navigator.push(context, MaterialPageRoute(builder: (context)=>SuccessScreen()));
     } on MailerException catch (e) {
       print('Message not sent.');
-
+      Scaffold.of(context).showSnackBar(SnackBar(content: Text('Something went wrong...',style: TextStyle(fontSize: 16),),shape: StadiumBorder(),backgroundColor: Colors.red,));
       for (var p in e.problems) {
         print('Problem: ${p.code}: ${p.msg}');
       }
