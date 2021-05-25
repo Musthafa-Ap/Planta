@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:planta/Homepage/Mainpage.dart';
 
 class Suggestions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     // bottomNavigationBar: Bot(),
       appBar: AppBar(title: Text("Suggestions"),backgroundColor: Colors.green,),
       body: Container(
         child: SingleChildScrollView(

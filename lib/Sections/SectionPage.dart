@@ -21,6 +21,7 @@ class _SectionPageState extends State<SectionPage> {
           physics: BouncingScrollPhysics(),
           child: Column(
             children: [
+              SizedBox(height: 10),
               IntrinsicHeight(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

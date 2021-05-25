@@ -25,11 +25,11 @@ class _SpecialItemsState extends State<SpecialItems> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
 
-SpecialCard(img: "Moneyplant2.jpeg",name: 'Moneyplant 2',price:298,context: context),
-                SpecialCard(img: 'Anthurium.jpg',name: 'Anthurium',price: 400,context: context),
-               SpecialCard(img: 'Indore_palm.jpeg',name: 'Indore Palm',price: 376,context: context),
-                SpecialCard(img: 'Snakeskin.jpg',name: 'Snakeskin ',price: 500,context: context),
-                SpecialCard(img: 'Spathiphyllm.jpg',name: 'Spathiphyllum',price: 450,context: context)
+SpecialCard(img: "Moneyplant2.jpeg",name: 'Moneyplant 2',price:298,context: context,actualprice: 400),
+                SpecialCard(img: 'Anthurium.jpg',name: 'Anthurium',price: 400,context: context,actualprice: 550 ),
+               SpecialCard(img: 'Indore_palm.jpeg',name: 'Indore Palm',price: 376,context: context,actualprice: 543),
+                SpecialCard(img: 'Snakeskin.jpg',name: 'Snakeskin ',price: 500,context: context,actualprice: 666),
+                SpecialCard(img: 'Spathiphyllm.jpg',name: 'Spathiphyllum',price: 450,context: context,actualprice: 589)
 
               ],
             ),
@@ -41,7 +41,7 @@ SpecialCard(img: "Moneyplant2.jpeg",name: 'Moneyplant 2',price:298,context: cont
     );
   }
 
-  Widget SpecialCard( {String img,String name,int price,BuildContext context}){
+  Widget SpecialCard( {String img,String name,int price,int actualprice,BuildContext context}){
     return GestureDetector(
       onTap: (){
         Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -70,7 +70,13 @@ SpecialCard(img: "Moneyplant2.jpeg",name: 'Moneyplant 2',price:298,context: cont
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(name,style: TextStyle(fontSize: 20),),
-                Text("₹$price",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),)
+                Column(
+                  children: [
+                    Text("₹$actualprice",style: TextStyle(fontSize: 17,decoration: TextDecoration.lineThrough),),
+                    Text("₹$price",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),)
+                  ],
+                ),
+
               ],
             )
           ],
@@ -79,4 +85,6 @@ SpecialCard(img: "Moneyplant2.jpeg",name: 'Moneyplant 2',price:298,context: cont
     );
 
   }
-}
+
+  }
+
